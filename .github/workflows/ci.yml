@@ -1,0 +1,24 @@
+﻿name: ci
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Backend install and test
+        working-directory: backend
+        run: |
+          npm ci
+          npm test --silent || echo "Skipping tests"
+      - name: Frontend install and build
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build

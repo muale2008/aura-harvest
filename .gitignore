@@ -1,0 +1,25 @@
+﻿# Node
+node_modules/
+npm-debug.log*
+yarn*.log
+pnpm-debug.log*
+*.log
+
+# Env
+.env
+config/.env
+config/.env.local
+frontend/.env.local
+backend/.env
+.env.*
+
+# Build
+.next/
+dist/
+out/
+coverage/
+.vscode/
+
+# Docker
+*.pid
+docker-data/
