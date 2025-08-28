@@ -1,14 +1,14 @@
 {
-  "dependencies": {
-    "mongodb": "^6.19.0",
-    "next": "^15.5.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "resend": "^6.0.1"
-  },
+  "name": "aura-harvest",
+  "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
+  },
+  "dependencies": {
+    "next": "^13.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
