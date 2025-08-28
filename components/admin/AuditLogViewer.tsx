@@ -1,3 +1,9 @@
+interface AuditLogEntry {
+  action: string;
+  target: string;
+  adminId: string;
+  timestamp: string | number;
+};
 import useSWR from 'swr';
 import axios from 'axios';
 
@@ -11,12 +17,15 @@ export default function AuditLogViewer() {
     <div>
       <h2>Admin Audit Logs</h2>
       <ul>
-        {data.map((log, i) => (
-          <li key={i}>
-            {log.action} on {log.target} by {log.adminId} at {new Date(log.timestamp).toLocaleString()}
-          </li>
-        ))}
+       {data.map((log: AuditLogEntry, i: number) => (
+  <li key={i}>
+    {log.action} on {log.target} by {log.adminId} at {new Date(log.timestamp).toLocaleString()}
+  </li>
+))}
       </ul>
     </div>
   );
 }
+
+
+

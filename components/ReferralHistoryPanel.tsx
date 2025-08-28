@@ -1,20 +1,25 @@
 import useSWR from 'swr';
 import axios from 'axios';
 
-export default function ReferralHistoryPanel({ userId }) {
-  const { data, error } = useSWR(`/api/referrals/history?userId=${userId}`, url => axios.get(url).then(res => res.data));
+interface ReferralHistoryPanelProps {
+  userId: string;
+}
+
+export default function ReferralHistoryPanel({ userId }: ReferralHistoryPanelProps) {
+  const { data, error } = useSWR(
+    `/api/referrals/history?userId=${userId}`,
+    url => axios.get(url).then(res => res.data)
+  );
 
   if (error) return <div>Error loading history</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
     <div>
-      <h2>Referral Unlock History</h2>
+      <h2>Referral History</h2>
       <ul>
-        {data.map((entry, i) => (
-          <li key={i}>
-            {entry.unlockedFeature} via {entry.source} on {new Date(entry.timestamp).toLocaleString()}
-          </li>
+        {data.map((referral: any, index: number) => (
+          <li key={index}>{referral.email}</li>
         ))}
       </ul>
     </div>
