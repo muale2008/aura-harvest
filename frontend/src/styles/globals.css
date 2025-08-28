@@ -1,4 +1,7 @@
-﻿:root {
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
   --aura-blue: #0ea5e9;
   --harvest-green: #10b981;
   --accent: #7c3aed;

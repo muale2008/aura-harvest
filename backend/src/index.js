@@ -1,4 +1,9 @@
-﻿require("dotenv").config({ path: require("path").join(process.cwd(), "..", "config", ".env") });
+﻿import express from 'express'
+import mongoose from 'mongoose'
+import referralRoutes from './routes/referralRoutes.js'
+
+
+require("dotenv").config({ path: require("path").join(process.cwd(), "..", "config", ".env") });
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
