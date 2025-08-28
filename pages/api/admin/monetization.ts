@@ -1,24 +1,27 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import MonetizationSettings from '@/lib/models/MonetizationSettings';
-import dbConnect from '@/lib/dbConnect';
+// pages/admin/monetization.tsx
+import { useState, useEffect } from 'react';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  await dbConnect();
+export default function MonetizationPage() {
+  const [settings, setSettings] = useState(null);
 
-  if (req.method === 'POST') {
-    const {
-      adEnabled,
-      affiliateJobsEnabled,
-      microPaymentsEnabled,
-      updatedBy,
-    } = req.body;
+  useEffect(() => {
+    fetch('/api/admin/monetization')
+      .then(res => res.json())
+      .then(data => setSettings(data));
+  }, []);
 
-    // Your logic here...
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end('Method Not Allowed');
-  }
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Monetization Settings</h1>
+      {settings ? (
+        <ul>
+          <li>Ads: {settings.adEnabled ? 'Enabled' : 'Disabled'}</li>
+          <li>Affiliate Jobs: {settings.affiliateJobsEnabled ? 'Enabled' : 'Disabled'}</li>
+          <li>Micro Payments: {settings.microPaymentsEnabled ? 'Enabled' : 'Disabled'}</li>
+        </ul>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
 }

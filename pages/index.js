@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 
+<Link href="/admin/monetization">Admin Monetization</Link>
+<Link href="/referrals/dashboard">Referral Dashboard</Link>
+<Link href="/progress/view">Progress Tracker</Link>
 export default function Home() {
   const [referrer, setReferrer] = useState(null);
 
