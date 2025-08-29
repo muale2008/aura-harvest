@@ -91,3 +91,12 @@ export default async function handler(
 **Reason:** TypeScript error due to implicit `any` on `req` and `res`  
 **Verified:** Build passes with `npm run build`  
 **Notes:** Ensures safe access to `req.body` and consistent API typing
+
+
+### [Fix] Homepage JSX Error
+
+**File:** `pages/index.js`  
+**Change:** Removed JSX from `useEffect`; wrapped all `<Link>` elements inside `return` block  
+**Verified:** `npm run dev` launches without syntax errors  
+**Next Steps:** Scaffold `/admin/monetization`, `/referrals/dashboard`, and `/progress/view` to reflect backend data
+
